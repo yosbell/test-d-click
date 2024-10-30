@@ -26,6 +26,15 @@ const TaskList = () => {
         setTasks(newTasks);
     }
 
+    const onAddTask = (task) => {
+        setTasks([...tasks, task]);
+        setOpenAddTask(false);
+    }
+
+    const onCancelAddTask = () => {
+        setOpenAddTask(false);
+    }
+
     return (
         <div>
             <Typography variant={"h1"}>Tasks</Typography>
@@ -38,7 +47,7 @@ const TaskList = () => {
                 </Stack>
             </Box>
 
-            {openAddTask && <AddTaskForm />}
+            {openAddTask && <AddTaskForm addTask={onAddTask} onCancel={onCancelAddTask} />}
         </div>
     );
 };
