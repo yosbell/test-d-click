@@ -11,9 +11,11 @@ Currently, two official plugins are available:
 For start develop
 
 Install package
-npm install 
+### `npm install`
 
 Run in dev mode
-npm run dev
 
-- open http://localhost:5173/
+### `npm run dev`
+
+To view in browser
+Open [http://localhost:5173/](http://localhost:5173/)
