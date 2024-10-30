@@ -5,35 +5,13 @@ import {Button} from "@mui/material";
 
 const TaskList = () => {
     const [openAddTask, setOpenAddTask] = useState();
-    const [tasks, setTasks] = useState([
-        {
-            "id": '0001',
-            "title": "hello task 0001",
-            "duration": 10,
-            "completed": false,
-        },
-        {
-            "id": '0002',
-            "title": "hello 0002",
-            "duration": 60,
-            "completed": false,
-        },
-        {
-            "id": '0003',
-            "title": "hello task 0003",
-            "duration": 30,
-            "completed": false,
-        },
-        {
-            "id": '0004',
-            "title": "hello task 0004",
-            "duration": 50,
-            "completed": false,
-        },
-    ]);
-    useEffect(()=>{
-        //get tasks
-    },[])
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/todos').then(response => response.json()).then(tasks => {
+            setTasks(tasks);
+        });
+    }, []);
 
     const handleOpenAddTask = () => {
         setOpenAddTask(true);
