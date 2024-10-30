@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TaskItem from "./TaskItem.jsx";
 import AddTaskForm from "./AddTaskForm.jsx";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import {Box, Button, Grid2, Stack, Typography} from "@mui/material";
 
 const TaskList = () => {
     const [openAddTask, setOpenAddTask] = useState();
@@ -37,14 +37,15 @@ const TaskList = () => {
 
     return (
         <div>
-            <Typography variant={"h1"}>Tasks</Typography>
             <Box sx={{ width: "100%" }}>
-                <Stack spacing={2} direction={"row"} sx={{ justifyContent: "end", marginBottom: 1 }}>
+                <Typography variant={"h1"} sx={{textAlign: 'center', fontWeight: 'medium'}}>Tasks</Typography>
+                <Stack spacing={2} direction={"row"} sx={{ justifyContent: "end", marginBottom: 2, marginRight: 15 }}>
                     <Button onClick={handleOpenAddTask} variant="contained">Add Task</Button>
                 </Stack>
-                <Stack spacing={2} direction={"row"} sx={{ flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Grid2 spacing={2} container direction={"row"} sx={{ flexWrap: 'wrap', justifyContent: 'center' }}>
                     {tasks.map(task=><TaskItem task={task} key={`task_${task.id}`} onChangeTask={onChangeTask} onDeleteTask={onDeleteTask}/>)}
-                </Stack>
+                </Grid2>
+                <Stack></Stack>
             </Box>
 
             {openAddTask && <AddTaskForm addTask={onAddTask} onCancel={onCancelAddTask} />}
